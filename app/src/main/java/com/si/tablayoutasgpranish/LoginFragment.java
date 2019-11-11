@@ -67,7 +67,13 @@ public class LoginFragment extends Fragment {
             TabLayoutInterface impl = new InterfaceClassIMPL();
             if (impl.Checkuser(name,password)){
                 Toast.makeText(getActivity(), "Welcome" + name,  Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(),)
+                Intent intent = new Intent(getActivity(),NavMain.class);
+                intent.putExtra("names",name);
+                startActivity(intent);
+
+            }
+            else {
+                Toast.makeText(getActivity(), "Login Failed Check Again!!", Toast.LENGTH_SHORT).show();
             }
         }
 
