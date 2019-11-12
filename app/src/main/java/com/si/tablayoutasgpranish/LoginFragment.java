@@ -21,15 +21,13 @@ import com.si.tablayoutasgpranish.model.Datacenter;
 
 
 public class LoginFragment extends Fragment {
-  EditText loginName, loginPassword;
-  Button btnlogin;
+    EditText loginName, loginPassword;
+    Button btnlogin;
 
 
     public LoginFragment() {
         // Required empty public constructor
     }
-
-
 
 
     @Override
@@ -42,6 +40,7 @@ public class LoginFragment extends Fragment {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataStore();
 
             }
         });
@@ -49,36 +48,37 @@ public class LoginFragment extends Fragment {
     }
 
 
-    public void DataStore(){
+    public void DataStore() {
         Datacenter datacenter = new Datacenter();
         String name = "", password = "";
-        if (!TextUtils.isEmpty(loginName.getText().toString())){
+        if (!TextUtils.isEmpty(loginName.getText().toString())) {
             name = loginName.getText().toString();
 
-            if (!TextUtils.isEmpty(loginPassword.getText().toString())){
+            if (!TextUtils.isEmpty(loginPassword.getText().toString())) {
                 password = loginPassword.getText().toString();
-            }
-
-            else {
-                loginName.setError("Enter Name");
+            } else {
+                loginPassword.setError("Enter Password");
                 return;
             }
-
-            TabLayoutInterface impl = new InterfaceClassIMPL();
-            if (impl.Checkuser(name,password)){
-                Toast.makeText(getActivity(), "Welcome" + name,  Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(),NavMain.class);
-                intent.putExtra("names",name);
-                startActivity(intent);
-
-            }
-            else {
-                Toast.makeText(getActivity(), "Login Failed Check Again!!", Toast.LENGTH_SHORT).show();
-            }
+        } else {
+            loginName.setError("Enter Name");
+            return;
         }
 
+        TabLayoutInterface impl = new InterfaceClassIMPL();
+        if (impl.Checkuser(name, password)) {
+            Toast.makeText(getActivity(), "Welcome" + name, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), NavMain.class);
+            intent.putExtra("names", name);
+            startActivity(intent);
+
+        } else {
+            Toast.makeText(getActivity(), "Login Failed Check Again!!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-
-
 }
+
+
+
+

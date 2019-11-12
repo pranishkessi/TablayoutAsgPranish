@@ -16,7 +16,7 @@ import com.si.tablayoutasgpranish.R;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import model
+import com.si.tablayoutasgpranish.model.Contacts;
 
 public class ContactsAdapters extends RecyclerView.Adapter<ContactsAdapters.ContactsViewHolder> {
     Context context;
